@@ -31,18 +31,15 @@ namespace VillaAPIDemo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Amenity")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -70,7 +67,7 @@ namespace VillaAPIDemo.Migrations
                         {
                             Id = 1,
                             Amenity = "qwertyu",
-                            CreatedDate = new DateTime(2023, 4, 30, 18, 37, 59, 953, DateTimeKind.Local).AddTicks(3353),
+                            CreatedDate = new DateTime(2023, 5, 1, 16, 28, 51, 500, DateTimeKind.Local).AddTicks(108),
                             Details = "awsedrtfuikolkmj dxujhsgfgvbhkm rdgyuhijogf",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa3.jpg",
                             Name = "abc Villa",
@@ -83,7 +80,7 @@ namespace VillaAPIDemo.Migrations
                         {
                             Id = 2,
                             Amenity = "oiuyt",
-                            CreatedDate = new DateTime(2023, 4, 30, 18, 37, 59, 953, DateTimeKind.Local).AddTicks(3364),
+                            CreatedDate = new DateTime(2023, 5, 1, 16, 28, 51, 500, DateTimeKind.Local).AddTicks(120),
                             Details = "sedrftgyhuj oiujytdrf poiuytrsdcfgvhbjnmk ftgyuhj",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa1.jpg",
                             Name = "def Villa",
@@ -96,7 +93,7 @@ namespace VillaAPIDemo.Migrations
                         {
                             Id = 3,
                             Amenity = "fghkj",
-                            CreatedDate = new DateTime(2023, 4, 30, 18, 37, 59, 953, DateTimeKind.Local).AddTicks(3366),
+                            CreatedDate = new DateTime(2023, 5, 1, 16, 28, 51, 500, DateTimeKind.Local).AddTicks(122),
                             Details = "wertyuhj lkjhgfd poiuytrdsx kjhgfd",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa4.jpg",
                             Name = "qwe Villa",
@@ -109,7 +106,7 @@ namespace VillaAPIDemo.Migrations
                         {
                             Id = 4,
                             Amenity = "dfgjhgjh",
-                            CreatedDate = new DateTime(2023, 4, 30, 18, 37, 59, 953, DateTimeKind.Local).AddTicks(3368),
+                            CreatedDate = new DateTime(2023, 5, 1, 16, 28, 51, 500, DateTimeKind.Local).AddTicks(123),
                             Details = "sdfgkjhgfd iuytrdf sdfyujk lokjhgfd",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa5.jpg",
                             Name = "poi Villa",
@@ -122,7 +119,7 @@ namespace VillaAPIDemo.Migrations
                         {
                             Id = 5,
                             Amenity = "ertyui",
-                            CreatedDate = new DateTime(2023, 4, 30, 18, 37, 59, 953, DateTimeKind.Local).AddTicks(3369),
+                            CreatedDate = new DateTime(2023, 5, 1, 16, 28, 51, 500, DateTimeKind.Local).AddTicks(125),
                             Details = "qwertyuiolkj sdfghjkl lkiuytredxcvbnm sdfghjkkkmnbvcd",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa2.jpg",
                             Name = "mnb Villa",
@@ -142,7 +139,6 @@ namespace VillaAPIDemo.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SpecialDetails")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
