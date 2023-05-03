@@ -8,17 +8,17 @@ namespace VillaAPIDemo_Web.Services.IServices
     public class BaseService : IBaseService
     {
         public APIResponse responseModel { get; set; }
-        public IHttpClientFactory httpClient { get; set; }
+        public IHttpClientFactory HttpClient { get; set; }
         public BaseService(IHttpClientFactory httpClient)
         {
             this.responseModel = new();
-            this.httpClient = httpClient;
+            this.HttpClient = httpClient;
         }
         public async Task<T> SendAsync<T>(APIRequest apiRequest)
         {
             try
             {
-                var client = httpClient.CreateClient("MagicAPI");
+                var client = HttpClient.CreateClient("");
                 HttpRequestMessage message = new HttpRequestMessage();
                 message.Headers.Add("Accept", "application/json");
                 message.RequestUri = new Uri(apiRequest.Url);
