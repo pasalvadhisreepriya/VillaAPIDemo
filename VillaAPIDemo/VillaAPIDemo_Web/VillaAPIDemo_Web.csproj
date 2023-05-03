@@ -21,8 +21,4 @@
     <ProjectReference Include="..\VillaAPIDemo_Utility\VillaAPIDemo_Utility.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
-
 </Project>
