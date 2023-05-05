@@ -147,7 +147,7 @@ namespace VillaAPIDemo_Web.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> DeleteVillaNumber(int villaID)
+        public async Task<IActionResult> DeleteVillaNumber(int villaID) 
 		{
             VillaNumberDeleteVM villaNumberVM = new();
             var response = await _villaNumberService.GetAsync<APIResponse>(villaID);
@@ -156,18 +156,21 @@ namespace VillaAPIDemo_Web.Controllers
                 VillaNumberDTO model = JsonConvert.DeserializeObject<VillaNumberDTO>(Convert.ToString(response.Result));
                 villaNumberVM.VillaNumber = model;
             }
-            response = await _villaService.GetAllAsync<APIResponse>();
-            if (response != null && response.IsSuccess)
-            {
-                villaNumberVM.VillaList = JsonConvert.DeserializeObject<List<VillaDTO>>
-                    (Convert.ToString(response.Result)).Select(i => new SelectListItem
-                    {
-                        Text = i.Name,
-                        Value = i.Id.ToString()
-                    });
-                return View(villaNumberVM);
-            }
-            return NotFound();
+			var result = await _villaNumberService.DeleteAsync<APIResponse>(villaNumberVM.VillaNumber.VillaNo);
+			return RedirectToAction(nameof(IndexVillaNumber));
+
+			//response = await _villaService.GetAllAsync<APIResponse>();
+			//if (response != null && response.IsSuccess)
+   //         {
+   //             villaNumberVM.VillaList = JsonConvert.DeserializeObject<List<VillaDTO>>
+   //                 (Convert.ToString(response.Result)).Select(i => new SelectListItem
+   //                 {
+   //                     Text = i.Name,
+   //                     Value = i.Id.ToString()
+   //                 });
+   //             return View(villaNumberVM);
+   //         }
+   //         return NotFound();
 		}
 		[HttpPost]
         [ValidateAntiForgeryToken]

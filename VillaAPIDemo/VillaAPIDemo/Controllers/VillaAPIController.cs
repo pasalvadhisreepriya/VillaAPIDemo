@@ -8,11 +8,13 @@ using VillaApi.Models.DTO;
 using AutoMapper;
 using VillaApi.Repository.IRepository;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace VillaApi.Controllers
 {
     [Route("api/villaAPI")]
     [ApiController]
+    [Authorize]
     public class VillaAPIController : ControllerBase
     {
         //private readonly ILogger<VillaAPIController> _logger;
@@ -37,6 +39,7 @@ namespace VillaApi.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [Authorize]
         public async Task<ActionResult<APIResponse>> GetVillas()
         {
             //_logger.Log("Getting all villas","");
@@ -62,7 +65,8 @@ namespace VillaApi.Controllers
         }
 
         [HttpGet("{id:int}", Name = "GetVilla")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+		[Authorize(Roles = "admin")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         //[ProducesResponseType(200,Type = typeof(VillaDTO))]
@@ -165,7 +169,8 @@ namespace VillaApi.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<APIResponse>> DeleteVilla(int id)
+		[Authorize(Roles = "CUSTOM")]
+		public async Task<ActionResult<APIResponse>> DeleteVilla(int id)
         {
             try
             {
