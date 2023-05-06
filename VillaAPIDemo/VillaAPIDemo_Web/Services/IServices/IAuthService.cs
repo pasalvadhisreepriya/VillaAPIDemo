@@ -1,6 +1,12 @@
-﻿namespace VillaAPIDemo_Web.Services.IServices
+﻿using VillaAPIDemo_Web.Models.Dto;
+
+namespace VillaAPIDemo_Web.Services.IServices
 {
 	public interface IAuthService
 	{
+		Task<T> LoginAsync<T>(LoginRequestDTO objToCreate);
+       
+        Task<T> RegisterAsync<T>(RegisterationRequestDTO objToCreate);
+
 	}
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using VillaAPIDemo_Utility;
 using VillaAPIDemo_Web.Models;
 using VillaAPIDemo_Web.Models.Dto;
 using VillaAPIDemo_Web.Services.IServices;
@@ -23,7 +24,7 @@ namespace VillaAPIDemo_Web.Controllers
 		{
 			List<VillaDTO> list = new();
 
-			var response = await _villaService.GetAllAsync<APIResponse>();
+			var response = await _villaService.GetAllAsync<APIResponse>(HttpContext.Session.GetString(SD.SessionToken));
 			if (response != null && response.IsSuccess)
 			{
 				list = JsonConvert.DeserializeObject<List<VillaDTO>>(Convert.ToString(response.Result));

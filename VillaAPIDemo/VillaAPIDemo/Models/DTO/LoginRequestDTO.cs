@@ -1,4 +1,4 @@
-﻿namespace VillaAPIDemo.Models.DTO
+﻿namespace VillaAPIDemo_Web.Models.DTO
 {
     public class LoginRequestDTO
     {

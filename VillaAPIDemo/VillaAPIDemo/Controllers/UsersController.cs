@@ -3,6 +3,7 @@ using System.Net;
 using VillaApi.Models;
 using VillaAPIDemo.Models.DTO;
 using VillaAPIDemo.Repository.IRepository;
+using VillaAPIDemo_Web.Models.DTO;
 
 namespace VillaAPIDemo.Controllers
 {
