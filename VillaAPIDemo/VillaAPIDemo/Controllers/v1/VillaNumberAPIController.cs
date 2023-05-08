@@ -7,9 +7,9 @@ using VillaApi.Models;
 using VillaApi.Models.DTO;
 using VillaApi.Repository.IRepository;
 
-namespace VillaApi.Controllers
+namespace VillaAPI.Controllers.v1
 {
-    [Route("api/VillaNumberAPI")]
+    [Route("api/v{version:apiVersion}/VillaNumberAPI")]
     [ApiController]
     public class VillaNumberAPIController : ControllerBase
     {
@@ -25,17 +25,18 @@ namespace VillaApi.Controllers
             _dbVillaNumber = dbVillaNumber;
             _mapper = mapper;
             _dbVilla = dbVilla;
-            this._response = new();
+            _response = new();
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        
         public async Task<ActionResult<APIResponse>> GetVillaNumbers()
         {
 
             try
             {
-                IEnumerable<VillaNumber> villaNumberList = await _dbVillaNumber.GetAllAsync(includeProperties:"Villa");
+                IEnumerable<VillaNumber> villaNumberList = await _dbVillaNumber.GetAllAsync(includeProperties: "Villa");
                 _response.Result = _mapper.Map<List<VillaNumberDTO>>(villaNumberList);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
@@ -88,7 +89,6 @@ namespace VillaApi.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -129,7 +129,6 @@ namespace VillaApi.Controllers
         }
 
         [HttpDelete("{id:int}", Name = "DeleteVillaNumber")]
-        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -165,9 +164,10 @@ namespace VillaApi.Controllers
 
 
         [HttpPut("{id:int}", Name = "UpdateVillaNumber")]
-        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+
         public async Task<ActionResult<APIResponse>> UpdateVillaNumber(int id, [FromBody] VillaNumberUpdateDTO updateDTO)
         {
             try

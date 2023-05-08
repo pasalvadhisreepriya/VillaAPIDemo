@@ -3,9 +3,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using VillaApi.Data;
 using VillaApi.Models;
+using VillaApi.Repository;
 using VillaApi.Repository.IRepository;
 
-namespace VillaApi.Repository
+namespace VillaAPI.Repository
 {
     public class VillaRepository : Repository<Villa>, IVillaRepository
     {

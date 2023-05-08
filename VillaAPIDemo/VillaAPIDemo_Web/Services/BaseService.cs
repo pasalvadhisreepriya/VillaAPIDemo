@@ -2,24 +2,26 @@
 using System.Net.Http.Headers;
 using System.Text;
 using VillaAPIDemo_Utility;
+using VillaAPIDemo_Web.Services.IServices;
+using VillaAPIDemo_Web;
 using VillaAPIDemo_Web.Models;
 
-namespace VillaAPIDemo_Web.Services.IServices
+namespace VillaAPI_Web.Services.IServices
 {
     public class BaseService : IBaseService
     {
         public APIResponse responseModel { get; set; }
-        public IHttpClientFactory HttpClient { get; set; }
+        public IHttpClientFactory httpClient { get; set; }
         public BaseService(IHttpClientFactory httpClient)
         {
             this.responseModel = new();
-            this.HttpClient = httpClient;
+            this.httpClient = httpClient;
         }
         public async Task<T> SendAsync<T>(APIRequest apiRequest)
         {
             try
             {
-                var client = HttpClient.CreateClient("");
+                var client = httpClient.CreateClient("MagicAPI");
                 HttpRequestMessage message = new HttpRequestMessage();
                 message.Headers.Add("Accept", "application/json");
                 message.RequestUri = new Uri(apiRequest.Url);
@@ -46,10 +48,9 @@ namespace VillaAPIDemo_Web.Services.IServices
                 }
 
                 HttpResponseMessage apiResponse = null;
-
                 if (!string.IsNullOrEmpty(apiRequest.Token))
                 {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+                    client.DefaultRequestHeaders.Authorization=new AuthenticationHeaderValue("Bearer", apiRequest.Token);
                 }
 
 

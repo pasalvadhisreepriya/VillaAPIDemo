@@ -2,6 +2,7 @@
 using VillaAPIDemo_Web.Models;
 using VillaAPIDemo_Utility;
 using VillaAPIDemo_Web.Services.IServices;
+using VillaAPI_Web.Services.IServices;
 
 namespace VillaAPIDemo_Web.Services
 {
@@ -23,8 +24,8 @@ namespace VillaAPIDemo_Web.Services
 				{
 					ApiType = SD.ApiType.POST,
 					Data = obj,
-					Url = villaUrl + "/api/UsersAuth/login"
-				});
+					Url = villaUrl + "/api/v1/UsersAuth/login"
+                });
 			}
 
      
@@ -35,8 +36,8 @@ namespace VillaAPIDemo_Web.Services
 				{
 					ApiType = SD.ApiType.POST,
 					Data = obj,
-					Url = villaUrl + "/api/UsersAuth/register"
-				});
+					Url = villaUrl + "/api/v1/UsersAuth/register"
+                });
 			}
 
       

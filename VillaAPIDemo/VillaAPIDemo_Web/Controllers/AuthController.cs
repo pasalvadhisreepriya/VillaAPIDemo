@@ -43,7 +43,7 @@ public class AuthController : Controller
         }
         else
         {
-            ModelState.AddModelError("CustomError", response.ErrorMessages.FirstOrDefault());
+            ModelState.AddModelError("Custom Error", response.ErrorMessages.FirstOrDefault());
             return View(obj);
         }
 
