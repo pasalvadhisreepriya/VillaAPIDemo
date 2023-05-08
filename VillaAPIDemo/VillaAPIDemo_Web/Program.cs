@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using VillaAPIDemo_Web;
 using VillaAPIDemo_Web.Services;
 using VillaAPIDemo_Web.Services.IServices;
@@ -42,6 +43,11 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+builder.Services.AddApiVersioning(config => {
+     config.DefaultApiVersion = new ApiVersion(1, 0);
+     config.AssumeDefaultVersionWhenUnspecified = true;
+ });
+
 
 
 
