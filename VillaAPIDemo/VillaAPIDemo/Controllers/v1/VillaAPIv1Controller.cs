@@ -38,7 +38,9 @@ namespace VillaAPI.Controllers.v1
        // [Authorize(Roles = "admin")]
 
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<APIResponse>> GetVillas([FromQuery(Name ="Filteroccupancy")]int? occupancy, [FromQuery]string? search, int pageSize = 0, int pageNumber = 1)
+        public async Task<ActionResult<APIResponse>> GetVillas([FromQuery(Name ="Filteroccupancy")]int? occupancy, [FromQuery]string? search, 
+            
+            int pageSize = 0, int pageNumber = 1)
         {
 
             try
