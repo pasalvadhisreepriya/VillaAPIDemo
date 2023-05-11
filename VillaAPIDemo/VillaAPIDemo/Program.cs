@@ -13,6 +13,8 @@ using VillaApi;
 using VillaAPIDemo.Repository.IRepository;
 using VillaAPIDemo.Repository;
 using VillaAPI.Repository;
+using Microsoft.AspNetCore.Identity;
+using VillaAPIDemo.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
 });
+
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().
+    AddEntityFrameworkStores<ApplicationDbContext>();
 
 
 builder.Services.AddResponseCaching();

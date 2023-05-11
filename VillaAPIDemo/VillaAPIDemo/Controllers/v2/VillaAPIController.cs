@@ -7,7 +7,7 @@ namespace VillaAPIDemo.Controllers.v2
         [ApiController]
         
         [ApiVersion("2.0")]
-        public class VillaAPIv2Controller : ControllerBase
+        public class VillaAPIController : ControllerBase
         {
            
             [HttpGet]

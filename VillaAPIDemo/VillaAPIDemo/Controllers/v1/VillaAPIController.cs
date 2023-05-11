@@ -17,7 +17,7 @@ namespace VillaAPI.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
    
-    public class VillaAPIv1Controller : ControllerBase
+    public class VillaAPIController : ControllerBase
     {
 
 
@@ -26,7 +26,7 @@ namespace VillaAPI.Controllers.v1
         protected APIResponse _response;
 
 
-        public VillaAPIv1Controller(IVillaRepository dbVilla, IMapper mapper)
+        public VillaAPIController(IVillaRepository dbVilla, IMapper mapper)
         {
             _dbVilla = dbVilla;
             _mapper = mapper;
@@ -40,8 +40,11 @@ namespace VillaAPI.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<APIResponse>> GetVillas([FromQuery(Name ="Filteroccupancy")]int? occupancy, [FromQuery]string? search, 
             
-            int pageSize = 0, int pageNumber = 1)
+            int pageSize = 0, int pageNumber=1)
         {
+
+
+
 
             try
             {
@@ -52,7 +55,7 @@ namespace VillaAPI.Controllers.v1
                 }
                 else
                 {
-                    villaList = await _dbVilla.GetAllAsync();
+                    villaList = await _dbVilla.GetAllAsync(pageSize: pageSize, pageNumber: pageNumber);
 
                 }
                 if (!string.IsNullOrEmpty(search))
@@ -62,6 +65,8 @@ namespace VillaAPI.Controllers.v1
                 Pagination pagination = new() {
                     PageNumber = pageNumber, PageSize = pageSize
                 };
+
+
 
                 Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagination));
 
